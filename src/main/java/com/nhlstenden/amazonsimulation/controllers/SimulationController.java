@@ -26,9 +26,13 @@ public class SimulationController {
 		// 	});
 		//
 		// 	Repeat for other properties.
+		//
+		//	Alternative: Make SimulationController a listener and handle PropertyChangeEvents by a switch-case.
 		
 		/* START SIMULATION ON ANOTHER THREAD */
-		//	EXAMPLE: this.simulation.start();
+		//	EXAMPLE: this.simulation.start(); //Simulation class handles threading
+		//
+		//	Alternative: SimulationController creates a new thread.
 	}
 	
 	//	EXAMPLE:
