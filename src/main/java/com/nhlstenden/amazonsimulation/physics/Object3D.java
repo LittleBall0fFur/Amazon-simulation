@@ -1,8 +1,6 @@
 package com.nhlstenden.amazonsimulation.physics;
 
-import java.util.Observable;
-
-public abstract class Object3D extends Observable {
+public abstract class Object3D {
 
 	private Vector3D position;
 	
