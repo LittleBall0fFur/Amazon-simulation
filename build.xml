@@ -1,0 +1,12 @@
+<project name="amazon-simulation-bootstrap">
+	<description>
+		This build script performs a set of simple tasks before the actual project is build.
+	</description>
+	<target name="init" description="Create the project's basic folder structure should it not exist. (e.g. when empty folders were not pulled from git)">
+		<mkdir dir="src/main/java"/>
+		<mkdir dir="src/main/resources"/>
+		<mkdir dir="src/test/java"/>
+		<mkdir dir="src/test/resources"/>
+		<eclipse.refreshLocal resource="Amazon-simulation/."/>
+	</target>
+</project>
