@@ -3,7 +3,7 @@ package com.nhlstenden.amazonsimulation.models;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class Simulation {
+public class AmazonSimulation {
 	
 	public enum ListenableProperty {
 		//	EXAMPLE: ROBOT_POSITION, ROBOT_ISLOADED, etc.
@@ -11,7 +11,7 @@ public class Simulation {
 	
 	private final PropertyChangeSupport eventService;
 	
-	public Simulation() {
+	public AmazonSimulation() {
 		this.eventService = new PropertyChangeSupport(this);
 	}
 	

@@ -4,20 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
-import com.nhlstenden.amazonsimulation.models.Simulation;
+import com.nhlstenden.amazonsimulation.models.AmazonSimulation;
 
 @Controller
 public class SimulationController {
 
 	private SimpMessagingTemplate messagingService;
 	
-	private Simulation simulation;
+	private AmazonSimulation simulation;
 	
 	@Autowired
 	public SimulationController(SimpMessagingTemplate messagingService) {
 		this.messagingService = messagingService;
 		
-		this.simulation = new Simulation(/* PASS PARAMETERS LIKE 'AMOUNT OF ROBOTS' ETC */);
+		this.simulation = new AmazonSimulation(/* PASS PARAMETERS LIKE 'AMOUNT OF ROBOTS' ETC */);
 		
 		/* ADD LISTENERS TO SIMULATION */
 		//	EXAMPLE:
