@@ -20,6 +20,13 @@ body {
 	background-color: transparent;
 }
 
+div.branding {
+	width: 798px;
+	height: 198px;
+	
+	background-image: url("../img/logos/amazonsimulation.png")
+}
+
 div.menu {
 	width: inherit;
 	height: inherit;
