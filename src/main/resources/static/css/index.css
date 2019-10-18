@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Red+Hat+Display:500&display=swap');
 
 html, body {
 	width: 100%;
@@ -8,7 +8,7 @@ html, body {
 }
 
 html {
-	font-family: 'Fredoka One', cursive;
+	font-family: 'Red Hat Display', sans-serif;
 
     background-color: white;
 
@@ -56,4 +56,18 @@ a.menu-option {
 
 a.menu-option:hover {
 	box-shadow: 0px 0px 0px 1px black;
+}
+
+footer {
+	width: inherit;
+	
+	padding: 8px;
+	
+	position: fixed;
+	bottom: 0;
+	
+	z-index: 1;
+	
+	color: gray;
+	text-align: center;
 }
