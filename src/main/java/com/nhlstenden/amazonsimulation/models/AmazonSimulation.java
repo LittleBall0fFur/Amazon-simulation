@@ -19,7 +19,7 @@ public class AmazonSimulation {
 		this.eventService.addPropertyChangeListener(property.toString(), listener);
 	}
 	
-	public void removeListener(ListenableProperty property, PropertyChangeListener listener) {
+	public void removePropertyChangeListener(ListenableProperty property, PropertyChangeListener listener) {
 		this.eventService.removePropertyChangeListener(property.toString(), listener);
 	}
 	
