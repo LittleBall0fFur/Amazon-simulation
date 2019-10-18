@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
+
+html, body {
+	width: 100%;
+	height: 100%;
+	
+	margin: 0;
+}
+
+html {
+	font-family: 'Fredoka One', cursive;
+
+    background-color: white;
+
+    background-image: linear-gradient(white 25%, transparent), url("../img/backgrounds/dot.svg");
+    background-repeat: no-repeat, repeat;
+}
+
+body {
+	background-color: transparent;
+}
+
+div.menu {
+	width: inherit;
+	height: inherit;
+	
+	display: flex;
+	
+	flex-direction: column;
+	justify-content: center;
+}
+
+div.menu > * {
+	margin: 8px auto;
+}
+
+div.menu-options {
+	display: inline-flex;
+	
+	flex-direction: column;
+}
+
+a.menu-option {
+	margin: 8px 0;
+	padding: 8px 32px;
+	
+	color: black;
+	text-decoration: none;
+	text-align: center;
+	
+	border-radius: 2px;
+	box-shadow: 0px 0px 0px 1px rgba(0.0, 0.0, 0.0, 0.25);
+	
+	transition: box-shadow 0.6s ease-in-out;
+}
+
+a.menu-option:hover {
+	box-shadow: 0px 0px 0px 1px black;
+}
