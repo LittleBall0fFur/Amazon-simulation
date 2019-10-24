@@ -2,9 +2,15 @@ import java.util.ArrayList;
 
 public class Grid {
     private ArrayList<ArrayList<Node>> grid;
+    public list<Node> path;
 
     private int width;
     private int height;
+
+    public int MaxSize(){
+
+        return width * height;
+    }
 
     public Grid(int width, int height) {
         this.width = width;
@@ -22,7 +28,7 @@ public class Grid {
     }
 
     public ArrayList<Node> getNeighbours (int x, int y){
-        ArrayList<Node> n = new ArrayList<>();
+        ArrayList<Node> neighbours = new ArrayList<>();
         //Kijken naar directe buren
         try{n.add(this.grid.get(x-1).get(y-1)); } catch(Exception e){}
         try{n.add(this.grid.get(x).get(y-1));} catch(Exception e){}
@@ -35,6 +41,9 @@ public class Grid {
         try{n.add(this.grid.get(x).get(y+1));} catch(Exception e){}
         try{n.add(this.grid.get(x+1).get(y+1));} catch(Exception e){}
  
-        return n;
+        return neighbours;
     }
+
+    
+
 }
