@@ -3,13 +3,11 @@ package com.nhlstenden.amazonsimulation.models;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Warehouse {
 	
 	public enum ListenableProperty {
-		//	EXAMPLE: ROBOT_POSITION, ROBOT_ISLOADED, etc.
+		STORAGE_RACK, TRUCK, ROBOT
 	}
 
 	private final PropertyChangeSupport eventService;
