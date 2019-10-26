@@ -14,7 +14,7 @@ public class Warehouse {
 
 	private final PropertyChangeSupport eventService;
 	
-	private Truck truck;
+	//private Truck truck;
 	private ArrayList<Robot> robots;
 	
 	public Warehouse() {
