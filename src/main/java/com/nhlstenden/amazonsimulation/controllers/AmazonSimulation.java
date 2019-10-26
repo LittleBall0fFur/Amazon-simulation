@@ -71,8 +71,8 @@ public class AmazonSimulation {
 	 * by the View upon connecting. The View should then subscribe to the update channels.
 	 * @return The current status of the warehouse.
 	 */
-	@MessageMapping("warehouse")
-	@SendToUser("queue/warehouse")
+	@MessageMapping("/warehouse")
+	@SendToUser("/queue/warehouse")
 	public Object requestWarehouseStatus() {
 		return new Object(); /* Return full current state of the simulation */
 	}
@@ -82,7 +82,7 @@ public class AmazonSimulation {
 	 * @param racks The new status of a storage rack.
 	 */
 	private void publishStorageRackUpdate(/*State of Rack*/Object storageRack) {
-		this.messagingService.convertAndSend("topic/rack", storageRack);
+		this.messagingService.convertAndSend("/topic/storage-rack", storageRack);
 	}
 	
 	/**
@@ -90,7 +90,7 @@ public class AmazonSimulation {
 	 * @param truck The new status of the truck.
 	 */
 	private void publishTruckUpdate(/*State of Truck*/Object truck) {
-		this.messagingService.convertAndSend("topic/truck", truck);
+		this.messagingService.convertAndSend("/topic/truck", truck);
 	}
 	
 	/**
@@ -98,7 +98,7 @@ public class AmazonSimulation {
 	 * @param robot The new status of a robot.
 	 */
 	private void publishRobotUpdate(/*State of Robot*/Object robot) {
-		this.messagingService.convertAndSend("topic/robot", robot);
+		this.messagingService.convertAndSend("/topic/robot", robot);
 	}
 	
 	/**
@@ -108,7 +108,7 @@ public class AmazonSimulation {
 	 * @return The message to be sent to affected Views. Sending this message is handled by Spring Boot.
 	 */
 	@MessageExceptionHandler
-	@SendToUser("queue/errors")
+	@SendToUser("/queue/errors")
 	private String handleMessageException(Throwable exception) {
 		exception.printStackTrace();
 		return exception.getMessage();
