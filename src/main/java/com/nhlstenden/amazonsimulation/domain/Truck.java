@@ -7,7 +7,7 @@ import com.nhlstenden.amazonsimulation.physics.Object3D;
 import com.nhlstenden.amazonsimulation.physics.Vector3D;
 
 public class Truck extends Object3D {
-
+	
 	private static final int STORAGE_CAPACITY = 5;
 	
 	private Warehouse warehouse;
@@ -18,6 +18,10 @@ public class Truck extends Object3D {
 		
 		this.warehouse = warehouse;
 		this.cargo = new LinkedList<StorageRack>(initial_cargo);
+	}
+	
+	public void update() {
+		
 	}
 	
 	public boolean isFull() {

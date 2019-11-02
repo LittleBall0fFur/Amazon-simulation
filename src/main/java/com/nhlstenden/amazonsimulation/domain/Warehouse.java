@@ -5,6 +5,8 @@ import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nhlstenden.amazonsimulation.pathfinding.Map;
+
 public class Warehouse {
 	
 	public enum ListenableProperty {
@@ -13,9 +15,11 @@ public class Warehouse {
 
 	private final PropertyChangeSupport eventService = new PropertyChangeSupport(this);
 	
+	private Map map;
+	private Inventory inventory;
+	
 	private Truck truck;
 	private List<Robot> robots;
-	private List<StorageRack> storageRacks;
 	
 	public Warehouse() {
 
