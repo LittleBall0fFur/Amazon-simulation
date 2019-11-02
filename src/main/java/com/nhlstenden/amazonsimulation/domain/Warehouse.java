@@ -1,8 +1,9 @@
-package com.nhlstenden.amazonsimulation.models;
+package com.nhlstenden.amazonsimulation.domain;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Warehouse {
 	
@@ -10,13 +11,14 @@ public class Warehouse {
 		STORAGE_RACK, TRUCK, ROBOT
 	}
 
-	private final PropertyChangeSupport eventService;
+	private final PropertyChangeSupport eventService = new PropertyChangeSupport(this);
 	
-	//private Truck truck;
-	private ArrayList<Robot> robots;
+	private Truck truck;
+	private List<Robot> robots;
+	private List<StorageRack> storageRacks;
 	
 	public Warehouse() {
-		this.eventService = new PropertyChangeSupport(this);
+
 	}
 
 	public void update() {

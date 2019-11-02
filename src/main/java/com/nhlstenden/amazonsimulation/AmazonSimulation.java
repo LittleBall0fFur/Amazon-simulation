@@ -1,4 +1,4 @@
-package com.nhlstenden.amazonsimulation.controllers;
+package com.nhlstenden.amazonsimulation;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -10,8 +10,8 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 
-import com.nhlstenden.amazonsimulation.models.Warehouse;
-import com.nhlstenden.amazonsimulation.models.Warehouse.ListenableProperty;
+import com.nhlstenden.amazonsimulation.domain.Warehouse;
+import com.nhlstenden.amazonsimulation.domain.Warehouse.ListenableProperty;
 
 @Controller
 public class AmazonSimulation {

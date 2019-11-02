@@ -2,13 +2,13 @@ package com.nhlstenden.amazonsimulation.physics;
 
 public final class Vector3D {
 	
-	public double x, y, z;
+	public final double x, y, z;
 
 	public Vector3D() {
 		this(0, 0, 0);
 	}
 	
-	public Vector3D(final Vector3D other) {
+	public Vector3D(Vector3D other) {
 		this(other.x, other.y, other.z);
 	}
 	
@@ -26,38 +26,32 @@ public final class Vector3D {
 		return (left_vector.x*right_vector.x) + (left_vector.y*right_vector.y) + (left_vector.z*right_vector.z);
 	}
 	
-	public static double distance(Vector3D start_point, Vector3D end_point) {
-		double x = end_point.x - start_point.x;
-		double y = end_point.y - start_point.y;
-		double z = end_point.z - start_point.z;
-		
-		return Math.sqrt(x*x + y*y + z*z);
+	public static double distance(Vector3D start_point, Vector3D end_point) {	
+		return start_point.subtract(end_point).magnitude();
+	}
+
+	public Vector3D limit(double max_length) {
+		return (this.magnitude() > max_length) ? this.normalize().scale(max_length) : this;
 	}
 	
 	public double magnitude() {
 		return Math.sqrt(x*x + y*y + z*z);
 	}
 	
-	public void normalize() {
-		this.scale(1.0/magnitude());
+	public Vector3D normalize() {
+		return this.scale(1.0/magnitude());
 	}
 	
-	public void add(Vector3D other) {
-		this.x += other.x;
-		this.y += other.y;
-		this.z += other.z;
+	public Vector3D add(Vector3D other) {
+		return new Vector3D(this.x + other.x, this.y + other.y, this.z + other.z);
 	}
 	
-	public void subtract(Vector3D other) {
-		this.x -= other.x;
-		this.y -= other.y;
-		this.z -= other.z;
+	public Vector3D subtract(Vector3D other) {
+		return new Vector3D(this.x - other.x, this.y - other.y, this.z - other.z);
 	}
 	
-	public void scale(double scalar) {
-		this.x *= scalar;
-		this.y *= scalar;
-		this.z *= scalar;
+	public Vector3D scale(double scalar) {
+		return new Vector3D(this.x * scalar, this.y * scalar, this.z * scalar);
 	}
 	
 	@Override
