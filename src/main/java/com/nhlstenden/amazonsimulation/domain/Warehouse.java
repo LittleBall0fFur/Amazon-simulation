@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.nhlstenden.amazonsimulation.pathfinding.Map;
 import com.nhlstenden.amazonsimulation.physics.Vector3D;
+import com.nhlstenden.amazonsimulation.robotai.RobotAi;
 import com.nhlstenden.amazonsimulation.robotai.RobotController;
 
 public class Warehouse {
@@ -29,7 +30,11 @@ public class Warehouse {
 
 	public void update() {
 		this.robotController.run();
-		eventService.firePropertyChange(ListenableProperty.ROBOT.toString(), null, this.robotController.robots.get(0));
+		
+		List<RobotAi> robotList = this.robotController.getRobots();
+		for(RobotAi r : robotList) {
+			eventService.firePropertyChange(ListenableProperty.ROBOT.toString(), null, r);
+		}
 	}
 
 	public void addPropertyChangeListener(ListenableProperty property, PropertyChangeListener listener) {
