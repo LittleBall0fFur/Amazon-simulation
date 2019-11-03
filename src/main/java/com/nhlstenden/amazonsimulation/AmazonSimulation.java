@@ -65,18 +65,7 @@ public class AmazonSimulation {
 	private void update() {
 		this.warehouse.update();
 	}
-	
-	/**
-	 * Request the current status of the whole simulation. This method is supposed to be called once
-	 * by the View upon connecting. The View should then subscribe to the update channels.
-	 * @return The current status of the warehouse.
-	 */
-	@MessageMapping("/warehouse")
-	@SendToUser("/queue/warehouse")
-	public Object requestWarehouseStatus() {
-		return new Object(); /* Return full current state of the simulation */
-	}
-	
+
 	/**
 	 * Update every View on the current status of a storage rack.
 	 * @param racks The new status of a storage rack.
