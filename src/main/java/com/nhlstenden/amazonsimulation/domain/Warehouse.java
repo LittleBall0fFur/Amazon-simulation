@@ -15,11 +15,9 @@ public class Warehouse {
 
 	private final PropertyChangeSupport eventService = new PropertyChangeSupport(this);
 	
-	private Map map;
 	private Inventory inventory;
 	
 	private Truck truck;
-	private List<Robot> robots;
 	
 	public Warehouse() {
 

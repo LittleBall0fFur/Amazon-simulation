@@ -34,6 +34,25 @@ public class Map {
 			}
 		}
 		
+		public void createGrid(int _x, int _y) {
+			for(int i = 0; i < _y; i++) {
+				for(int j = 0; j < _x; j++) {
+					this.addVertex(new Vector3D(_x, _y, 0));
+				}
+			}
+			
+			for (Node node : nodes.values()) {
+				for(int i = -1; i < 2; i++) {
+					if(node.getPosition().x+i >= 0 && node.getPosition().x+i <= _x) {
+						this.connect(node.getPosition(), node.getPosition().add(new Vector3D(i,0,0)));
+					}
+					if(node.getPosition().y+i >= 0 && node.getPosition().y+i <= _x) {
+						this.connect(node.getPosition(), node.getPosition().add(new Vector3D(0,i,0)));
+					}
+				}
+			}
+		}
+		
 		private Builder tryConnect(Vector3D vertexA, Vector3D vertexB) {
 			Node nodeA = nodes.get(vertexA);
 			Node nodeB = nodes.get(vertexB);
