@@ -55,6 +55,16 @@ public final class Vector3D {
 	}
 	
 	@Override
+	public int hashCode() {
+		int result = 1;
+		result = 31 * result + Double.hashCode(x);
+		result = 31 * result + Double.hashCode(y);
+		result = 31 * result + Double.hashCode(z);
+		
+		return result;
+	}
+	
+	@Override
 	public boolean equals(Object object) {
 		if (object == this) {
 			return true;
