@@ -54,10 +54,18 @@ public final class Vector3D {
 		return new Vector3D(this.x * scalar, this.y * scalar, this.z * scalar);
 	}
 	
-	public boolean equals(Vector3D other) {
-		final double THRESHOLD = 0.000001;
-		final double average_delta = ((this.x - other.x) + (this.y - other.y) + (this.z - other.z)) / 3.0;
-		return average_delta <= THRESHOLD;
+	@Override
+	public boolean equals(Object object) {
+		if (object == this) {
+			return true;
+		} else if (object == null || !(object instanceof Vector3D)) {
+			return false;
+		}
+		
+		Vector3D other = (Vector3D) object;
+		return (Double.compare(this.x, other.x) == 0) && 
+			   (Double.compare(this.y, other.y) == 0) &&
+			   (Double.compare(this.z, other.z) == 0);
 	}
 	
 	@Override
