@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.nhlstenden.amazonsimulation.domain.InventorySlot;
+import com.nhlstenden.amazonsimulation.domain.StorageRack;
 import com.nhlstenden.amazonsimulation.physics.Vector3D;
 
 public class RobotVision {
@@ -81,11 +82,39 @@ public class RobotVision {
 		nodes = builder.nodes;
 	}
 	
-	public Vector3D getStorageSpacePoint() {
+	public void placeStorageRack(Vector3D position, StorageRack storageRack) {
+		Node node = nodes.get(position);
+		if(node != null) {
+			node.placeStorageRack(storageRack);
+		}
+	}
+	
+	public StorageRack takeStorageRack(Vector3D position) {
+		Node node = nodes.get(position);
+		if(node != null) {
+			return node.takeStorageRack();
+		}
+		return null;
+	}
+	
+	public Vector3D getStorageSpaceDropPoint() {
 		for(int i = 0; i <= RobotVision.MAX_STORAGESPACE_X; i++) {
 			for(int j = RobotController.GRID_SIZE_Y-1; j >= 0; j--) {
 				Node node = nodes.get(new Vector3D(i, j, 0));
 				if(node != null && !node.isOccupied() && !node.isReserved()) {
+					node.reserve();
+					return node.getPosition();
+				}
+			}
+		}
+		return null;
+	}
+	
+	public Vector3D getStorageSpacePickupPoint() {
+		for(int i = RobotVision.MAX_STORAGESPACE_X-1; i >= 0 ; i--) {
+			for(int j = 0; j < RobotController.GRID_SIZE_Y; j++) {
+				Node node = nodes.get(new Vector3D(i, j, 0));
+				if(node != null && node.isOccupied() && !node.isReserved()) {
 					node.reserve();
 					return node.getPosition();
 				}

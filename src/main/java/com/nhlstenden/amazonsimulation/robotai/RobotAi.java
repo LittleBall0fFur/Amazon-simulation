@@ -7,19 +7,19 @@ import com.nhlstenden.amazonsimulation.physics.Vector3D;
 
 public class RobotAi extends Robot {
 
-	public enum Tasks{ NONE, DROP, LOAD, STORE}
+	public enum RobotAiTasks{ NONE, DROP, LOAD, PICKUP, PUTDOWN, STORE}
 	
 	private static float ROBOT_SPEED = 0.03f;
 	private static double ROBOT_TARGET_THRESHOLD = 0.1f;
 
 	private Path path;
-	private Tasks task;
+	private RobotAiTasks task;
 	private Vector3D target;
 	private StorageRack storageRack;
 	
 	public RobotAi(RobotController controller, Vector3D spawnPosition) {
 		super(controller, spawnPosition);
-		task = Tasks.NONE;
+		task = RobotAiTasks.NONE;
 	}
 	
 	public void update() {
@@ -75,11 +75,11 @@ public class RobotAi extends Robot {
 		return this.storageRack;
 	}
 	
-	public void setTask(Tasks task) {
+	public void setTask(RobotAiTasks task) {
 		this.task = task;
 	}
 	
-	public Tasks getTask() {
+	public RobotAiTasks getTask() {
 		return this.task;
 	}
 

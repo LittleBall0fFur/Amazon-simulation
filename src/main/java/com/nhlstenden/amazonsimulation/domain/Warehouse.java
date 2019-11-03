@@ -2,13 +2,11 @@ package com.nhlstenden.amazonsimulation.domain;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.ArrayList;
 import java.util.List;
 
-import com.nhlstenden.amazonsimulation.pathfinding.Map;
-import com.nhlstenden.amazonsimulation.physics.Vector3D;
 import com.nhlstenden.amazonsimulation.robotai.RobotAi;
 import com.nhlstenden.amazonsimulation.robotai.RobotController;
+import com.nhlstenden.amazonsimulation.robotai.Task;
 
 public class Warehouse {
 	
@@ -26,6 +24,7 @@ public class Warehouse {
 	
 	public Warehouse() {
 		this.robotController = new RobotController();
+		this.robotController.setTask(new Task(Task.RobotControllerTasks.UNLOAD, 6, this));
 	}
 
 	public void update() {
@@ -42,6 +41,11 @@ public class Warehouse {
 		for(StorageRack s : storageRackList) {
 			eventService.firePropertyChange(ListenableProperty.STORAGE_RACK.toString(), null, s);
 		}
+	}
+	
+	public void robotsCompleted() {
+		System.out.println("COMPLETE!!!");
+		this.robotController.setTask(new Task(Task.RobotControllerTasks.LOAD, 5, this));
 	}
 
 	public void addPropertyChangeListener(ListenableProperty property, PropertyChangeListener listener) {

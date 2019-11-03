@@ -26,6 +26,11 @@ public class InventorySlot {
 		this.reserved = true;
 	}
 	
+	public void unReserve() {
+		this.reserved = false;
+	}
+	
+	
 	public boolean isReserved() {
 		return this.reserved;
 	}
@@ -44,6 +49,7 @@ public class InventorySlot {
 		}
 		
 		this.content = storageRack;
+		this.reserved = false;
 	}
 	
 	public StorageRack takeStorageRack() {
