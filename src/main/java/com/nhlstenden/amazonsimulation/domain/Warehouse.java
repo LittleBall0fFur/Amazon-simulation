@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.nhlstenden.amazonsimulation.pathfinding.Map;
+import com.nhlstenden.amazonsimulation.physics.Vector3D;
+import com.nhlstenden.amazonsimulation.robotai.RobotController;
 
 public class Warehouse {
 	
@@ -15,16 +17,19 @@ public class Warehouse {
 
 	private final PropertyChangeSupport eventService = new PropertyChangeSupport(this);
 	
+	private RobotController robotController;
+	
 	private Inventory inventory;
 	
 	private Truck truck;
 	
 	public Warehouse() {
-
+		this.robotController = new RobotController();
 	}
 
 	public void update() {
-		//	TODO: Implement
+		this.robotController.run();
+		eventService.firePropertyChange(ListenableProperty.ROBOT.toString(), null, this.robotController.robots.get(0));
 	}
 
 	public void addPropertyChangeListener(ListenableProperty property, PropertyChangeListener listener) {

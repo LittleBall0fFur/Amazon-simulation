@@ -1,4 +1,4 @@
-'3233233'package com.nhlstenden.amazonsimulation;
+package com.nhlstenden.amazonsimulation;
 
 import java.util.Timer;
 import java.util.TimerTask;

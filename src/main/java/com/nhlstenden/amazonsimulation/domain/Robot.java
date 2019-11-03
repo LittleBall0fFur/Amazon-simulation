@@ -2,16 +2,18 @@ package com.nhlstenden.amazonsimulation.domain;
 
 import com.nhlstenden.amazonsimulation.physics.Object3D;
 import com.nhlstenden.amazonsimulation.physics.Vector3D;
+import com.nhlstenden.amazonsimulation.robotai.RobotController;
 
 public class Robot extends Object3D {
 
-	private Warehouse warehouse;
+	protected RobotController controller;
 	private StorageRack cargo;
 	
-	public Robot(Warehouse warehouse) {
+	public Robot(RobotController controller, Vector3D spawnPosition) {
 		super();
 		
-		this.warehouse = warehouse;
+		this.getTransform().setPosition(spawnPosition);
+		this.controller = controller;
 		this.cargo = null;
 	}
 	
