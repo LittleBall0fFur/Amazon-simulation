@@ -5,9 +5,12 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.nhlstenden.amazonsimulation.domain.InventorySlot;
 import com.nhlstenden.amazonsimulation.physics.Vector3D;
 
 public class RobotVision {
+	
+	private static int MAX_STORAGESPACE_X = 3;
 	
 	public enum NodeType{
 		STORAGE_SPACE, TRUCK_PICKUP_POINT, TRUCK_DROPOFF_POINT
@@ -29,10 +32,7 @@ public class RobotVision {
 		public Builder setVertexState(Vector3D vertex, NodeType type) {
 			Node n = nodes.get(vertex);
 			if(n != null) {
-				System.out.println("in");
 				n.setType(type);
-			}else {
-				System.out.println("out");
 			}
 			return this;
 		}
@@ -51,12 +51,12 @@ public class RobotVision {
 		
 	}
 
-	private static class Node {
+	private static class Node extends InventorySlot {
 		
-		private Vector3D position;
 		private NodeType type;
 		
 		private Node(Vector3D position, NodeType type) {
+			super(position);
 			this.position = position;
 			this.type = type;
 		}
@@ -82,7 +82,16 @@ public class RobotVision {
 	}
 	
 	public Vector3D getStorageSpacePoint() {
-		return new Vector3D(0,0,0);
+		for(int i = 0; i <= RobotVision.MAX_STORAGESPACE_X; i++) {
+			for(int j = RobotController.GRID_SIZE_Y-1; j >= 0; j--) {
+				Node node = nodes.get(new Vector3D(i, j, 0));
+				if(node != null && !node.isOccupied() && !node.isReserved()) {
+					node.reserve();
+					return node.getPosition();
+				}
+			}
+		}
+		return null;
 	}
 	
 	public Vector3D getTruckPickupPoint() {

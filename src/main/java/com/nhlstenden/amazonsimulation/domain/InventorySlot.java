@@ -4,8 +4,9 @@ import com.nhlstenden.amazonsimulation.physics.Vector3D;
 
 public class InventorySlot {
 
-	private Vector3D position;
-	private StorageRack content;
+	protected Vector3D position;
+	protected StorageRack content;
+	protected boolean reserved;
 	
 	public InventorySlot(Vector3D position) {
 		this(position, null);
@@ -14,18 +15,27 @@ public class InventorySlot {
 	public InventorySlot(Vector3D position, StorageRack storageRack) {
 		this.position = position;
 		this.content = storageRack;
+		this.reserved = false;
 	}
 	
 	public Vector3D getPosition() {
 		return position;
 	}
 	
+	public void reserve() {
+		this.reserved = true;
+	}
+	
+	public boolean isReserved() {
+		return this.reserved;
+	}
+	
 	public boolean isOccupied() {
-		return (content != null);
+		return (this.content != null);
 	}
 	
 	public boolean isFree() {
-		return (content == null);
+		return (this.content == null);
 	}
 	
 	public void placeStorageRack(StorageRack storageRack) {
@@ -33,7 +43,7 @@ public class InventorySlot {
 			throw new IllegalStateException("");
 		}
 		
-		content = storageRack;
+		this.content = storageRack;
 	}
 	
 	public StorageRack takeStorageRack() {
@@ -41,8 +51,9 @@ public class InventorySlot {
 			throw new IllegalStateException("");
 		}
 		
-		StorageRack storageRack = content;
-		content = null;
+		StorageRack storageRack = this.content;
+		this.content = null;
+		this.reserved = false;
 		
 		return storageRack;
 	}

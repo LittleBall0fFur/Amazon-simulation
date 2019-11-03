@@ -20,8 +20,10 @@ function connectToAmazonSimulation() {
 	});
 };
 
-function updateStorageRacks(storageRack) {
-	console.log(storageRack); //Example Code.
+function updateStorageRacks(s) {
+	if(warehouse != null){
+		warehouse.updateStorageRack(s);
+	}
 }
 
 function updateTruck(truck) {

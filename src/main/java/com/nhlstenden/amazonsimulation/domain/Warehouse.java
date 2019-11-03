@@ -31,9 +31,16 @@ public class Warehouse {
 	public void update() {
 		this.robotController.run();
 		
+		// update robots with clients
 		List<RobotAi> robotList = this.robotController.getRobots();
 		for(RobotAi r : robotList) {
 			eventService.firePropertyChange(ListenableProperty.ROBOT.toString(), null, r);
+		}
+		
+		// update storageracks with clients
+		List<StorageRack> storageRackList = this.robotController.getStorageRack();
+		for(StorageRack s : storageRackList) {
+			eventService.firePropertyChange(ListenableProperty.STORAGE_RACK.toString(), null, s);
 		}
 	}
 
